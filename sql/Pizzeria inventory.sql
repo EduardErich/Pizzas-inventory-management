@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `Salinha`.`Historico_Movimentacao` (
   `id_produto` INT UNSIGNED NOT NULL,
   `tipo_movimentacao` ENUM('entrada', 'saida') NOT NULL,
   `quantidade_movida` INT UNSIGNED NOT NULL,
-  `data` DATE NOT NULL,
+  `data` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   `responsavel` VARCHAR(20) NULL,
   PRIMARY KEY (`id_historico`, `id_produto`),
   UNIQUE INDEX `id_historico_UNIQUE` (`id_historico` ASC) VISIBLE,
@@ -58,7 +58,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `Salinha`.`Estoque` (
   `id_produto` INT UNSIGNED NOT NULL,
   `quantidade` INT UNSIGNED NOT NULL,
-  `data_atualizacao` DATE NOT NULL,
+  `data_atualizacao` TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
   PRIMARY KEY (`id_produto`),
   INDEX `fk_Estoque_Produto_idx` (`id_produto` ASC) VISIBLE,
   CONSTRAINT `fk_Estoque_Produto`
